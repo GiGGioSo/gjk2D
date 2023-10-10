@@ -12,6 +12,8 @@ typedef struct Shape {
 
 void DrawShape(Shape shape, float x, float y, Color color);
 
+int ShapesAreColliding(Shape s1, Shape s2);
+
 int main() {
 
     int width = 900;
@@ -74,4 +76,7 @@ void DrawShape(Shape shape, float x, float y, Color color) {
     for (int i = 0; i < shape.verticesCount; ++i) {
         shape.vertices[i] = Vector2Subtract(shape.vertices[i], shape.pos);
     }
+}
+
+int ShapesAreColliding(Shape s1, Shape s2) {
 }
