@@ -12,7 +12,11 @@ typedef struct Shape {
 
 void DrawShape(Shape shape, float x, float y, Color color);
 
-int ShapesAreColliding(Shape s1, Shape s2);
+Vector2 GetFarthestVertex(Shape s, Vector2D dir);
+
+int GjkShapesAreColliding(Shape s1, Shape s2);
+
+Vector2 GjkSupport(Shape s1, Shape s2, Vector2 dir);
 
 int main() {
 
@@ -78,5 +82,39 @@ void DrawShape(Shape shape, float x, float y, Color color) {
     }
 }
 
-int ShapesAreColliding(Shape s1, Shape s2) {
+int GjkShapesAreColliding(Shape s1, Shape s2) {
+    Vector2 search_dir = Vector2One(); // arbitrary
+
+    Vector2 enclosure[4];
+    size_t enclosure_index = 0;
+
+    Vector2 s = GjkSupport(s1, s2, search_dir);
+    search_dir = Vector2Negate(s);
+
+    // TODO: FINISH
+
+}
+
+Vector2 GjkSupport(Shape s1, Shape s2, Vector2 dir) {
+    Vector2 farthestS1 = Vector2Add(s1.pos, GetFarthestVertex(s1));
+    Vector2 farthestS2 = Vector2Add(s2.pos, GetFarthestVertex(s2));
+    
+    return Vector2Subtract(farthestS1, farthestS2);
+}
+
+Vector2 GetFarthestVertex(Shape shape, Vector2D dir) {
+    if (shape.verticesCount <= 0) return Vector2Zero();
+
+    Vector2 max = shape.vertices[0];
+    int dot_max = Vector2DotProduct(max, dir);
+
+    for (int i = 1; i < shape.verticesCount; ++i) {
+        int next_dot = Vector2DotProduct(shape.vertices[i];
+        if (next_dot > dot_max)) {
+            max_dot = next_dot;
+            max = shape.vertices[i];
+        }
+    }
+
+    return max;
 }
