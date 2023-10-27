@@ -21,5 +21,5 @@ Keybindings:
 - `F4`: Close the application
 
 ## Screenshots
-![collision](./images/collision.jpn)
-![no_collision](./images/no_collision.jpn)
+![collision](./images/collision.jpg)
+![no_collision](./images/no_collision.jpg)
