@@ -9,7 +9,7 @@ set LIBS=-L ./lib/windows/ -lraylib -lopengl32 -lgdi32 -lwinmm -luser32 -lshell3
 set EXE=./bin/gjk.exe
 set SOURCES=main.c
 
-DEL /d bin
+RMDIR /s /q bin
 MKDIR bin
 
 @ECHO ON
